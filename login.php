@@ -25,5 +25,6 @@
       maxlength='16' name='userName' value='$user'><br>
       <span class='fieldname'>Password</span><input type='password'
       maxlength='16' name='password' value='$pass'><br>
+      <input type="submit" name="submit" id="submit" value="Log in"><br>
       <a href='registration.php'>Or click here for registration</a>
 _END;
