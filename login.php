@@ -9,7 +9,7 @@
       if ($user == "" || $pass == "")
           $error = "Not all fields were entered<br>";
       else {
-          $result = db->requestSelectUserName('userName');
+          $result = $db->requestSelectUserName('userName');
           if ($result->num_rows == 0){
               $error = "<span class='error'>Username/Password invalid</span><br><br>";
           } else {
@@ -20,7 +20,7 @@
       }
   }
   echo <<<_END
-      form method='post' action='login.php'>$error
+      <form method='post' action='login.php'>$error
       <span class='fieldname'>Username</span><input type='text'
       maxlength='16' name='userName' value='$user'><br>
       <span class='fieldname'>Password</span><input type='password'
