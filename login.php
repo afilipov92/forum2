@@ -10,7 +10,7 @@
           $error = "Not all fields were entered<br>";
       else {
           $result = $db->requestSelectUserName('userName');
-          if ($result->num_rows == 0){
+          if ($result == 0){
               $error = "<span class='error'>Username/Password invalid</span><br><br>";
           } else {
               $_SESSION['userName'] = $user;

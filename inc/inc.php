@@ -21,3 +21,7 @@ define('MAIL_USERNAME', 'al.oz2015@yandex.ru');
 define('MAIL_PASSWORD', 'Paradise90');
 
 spl_autoload_register('my_autoload');
+
+$db = new DB();
+$templ = new Template();
+$ob = new FormData();

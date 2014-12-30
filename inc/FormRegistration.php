@@ -38,7 +38,7 @@ class FormRegistration{
     }
 
     /**
-     * Проверяет валидность заполлнения полей формы
+     * Проверяет валидность заполнения полей формы
      * @param FormData $ob
      * @param DB $db
      * @return array|bool
