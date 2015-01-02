@@ -1,6 +1,5 @@
 <?php
   require_once 'inc/inc.php';
-  echo "<div class='main'><h3>Please enter your details to log in</h3>";
   $error = $user = $pass = "";
 
   if (isset($_POST['userName'])){
@@ -20,6 +19,7 @@
       }
   }
   echo <<<_END
+      <div class='main'><h3>Please enter your details to log in</h3>
       <form method='post' action='login.php'>$error
       <span class='fieldname'>Username</span><input type='text'
       maxlength='16' name='userName' value='$user'><br>
