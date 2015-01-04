@@ -32,6 +32,36 @@ class DB{
     }
 
     /**
+     * update пользователя
+     * @param FormData $Data
+     * @return bool
+     */
+    public function updateUser(FormData $Data){
+        $ins = $this->db->prepare("UPDATE users SET userName=:userName, password=:password, extInfo=:extInfo
+                                    WHERE id=:id");
+        return $ins->execute(array(
+            'id' => $Data->id,'userName' => $Data->userName, 'password' => md5($Data->password), 'extInfo' => $Data->extInfo
+        ));
+
+    }
+
+    /**
+     * выборка из таблицы users по id
+     * @param $UserId
+     * @return bool|mixed
+     */
+    public function requestSelectUserId($UserId){
+        $sth = $this->db->prepare("SELECT * FROM users WHERE id=:UserId");
+        $sth->execute(array('UserId' => $UserId));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if(!empty($mas)){
+            return $mas;
+        } else{
+            return false;
+        }
+    }
+
+    /**
      * выборка из таблицы users по userName
      * @param $userName
      * @return bool|mixed
@@ -88,5 +118,17 @@ class DB{
     public function updateHashDB($id){
         $sth = $this->db->prepare("UPDATE users SET hash=:hash WHERE id=:id");
         return $sth->execute(array('hash' => 'actived', 'id' => $id));
+    }
+
+    public function requestSelectUser($userName, $pass){
+        $sth = $this->db->prepare("SELECT * FROM users WHERE userName = :userName AND password = :pass");
+        $sth->execute(array('userName' => $userName, 'pass' => $pass));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if(!empty($mas)){
+            return $mas;
+        }
+        else{
+            return false;
+        }
     }
 }

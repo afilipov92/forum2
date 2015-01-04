@@ -20,11 +20,14 @@ class FormRegistration{
      * @param FormData $ob
      */
     public static function getFormData(FormData $ob){
-        $ob->userName = isset($_POST['userName'])? trim(strip_tags($_POST['userName'])): "";
+        foreach($_POST as $key => $val){
+            $ob->$key = isset($_POST[$key])? trim(strip_tags(htmlspecialchars($_POST[$key]))): "";
+        }
+       /* $ob->userName = isset($_POST['userName'])? trim(strip_tags($_POST['userName'])): "";
         $ob->userEmail = isset($_POST['userEmail'])? trim(strip_tags($_POST['userEmail'])): "";
         $ob->password = isset($_POST['password'])? trim(strip_tags($_POST['password'])): "";
         $ob->passwordConfirm = isset($_POST['passwordConfirm'])? trim(strip_tags($_POST['passwordConfirm'])): "";
-        $ob->captcha = isset($_POST['captcha'])? trim(htmlspecialchars($_POST['captcha'])): "";
+        $ob->captcha = isset($_POST['captcha'])? trim(htmlspecialchars($_POST['captcha'])): "";*/
     }
 
     /**

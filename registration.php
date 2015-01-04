@@ -1,10 +1,6 @@
 <?php
 require_once('inc/inc.php');
 
-$db = new DB();
-$templ = new Template();
-$ob = new FormData();
-
 $pageTpl = Template::getTemplate('page');
 $templ->setHtml(Template::getTemplate('form_registration'));
 
