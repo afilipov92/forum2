@@ -32,6 +32,22 @@ class DB{
     }
 
     /**
+     * выборка из таблицы users по id
+     * @param $UserId
+     * @return bool|mixed
+     */
+    public function requestSelectUserId($UserId){
+        $sth = $this->db->prepare("SELECT * FROM users WHERE id=:UserUd");
+        $sth->execute(array('UserId' => $UserId));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if(!empty($mas)){
+            return $mas;
+        } else{
+            return false;
+        }
+    }
+
+    /**
      * выборка из таблицы users по userName
      * @param $userName
      * @return bool|mixed
