@@ -89,4 +89,16 @@ class DB{
         $sth = $this->db->prepare("UPDATE users SET hash=:hash WHERE id=:id");
         return $sth->execute(array('hash' => 'actived', 'id' => $id));
     }
+
+    public function requestSelectUser($userName, $pass){
+        $sth = $this->db->prepare("SELECT * FROM users WHERE userName = :userName AND password = :pass");
+        $sth->execute(array('userName' => $userName, 'pass' => $pass));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if(!empty($mas)){
+            return $mas;
+        }
+        else{
+            return false;
+        }
+    }
 }

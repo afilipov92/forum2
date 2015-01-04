@@ -9,8 +9,8 @@
       if ($user == "" || $pass == "")
           $error = "Not all fields were entered<br>";
       else {
-          $result = $db->requestSelectUserName('userName');
-          if ($result == 0){
+          $result = $db->requestSelectUser($user, md5($pass));
+          if (!$result){
               $error = "<span class='error'>Username/Password invalid</span><br><br>";
           } else {
               $_SESSION['userName'] = $user;
