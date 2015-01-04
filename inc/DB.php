@@ -32,6 +32,20 @@ class DB{
     }
 
     /**
+     * update пользователя
+     * @param FormData $Data
+     * @return bool
+     */
+    public function updateUser(FormData $Data){
+        $ins = $this->db->prepare("UPDATE users SET userName=:userName, password=:password, extInfo=:extInfo
+                                    WHERE id=:id");
+        return $ins->execute(array(
+            'id' => $Data->id,'userName' => $Data->userName, 'password' => md5($Data->password), 'extInfo' => $Data->extInfo
+        ));
+
+    }
+
+    /**
      * выборка из таблицы users по id
      * @param $UserId
      * @return bool|mixed
