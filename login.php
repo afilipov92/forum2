@@ -16,7 +16,7 @@
               $_SESSION['userName'] = $user;
               $_SESSION['password'] = $pass;
               $_SESSION['userId'] = $result['id'];
-              die("You are now logged in. Please <a href='members.php?view=$user'>" . "click here</a> to continue.<br><br>");
+              die("You are now logged in. Please <a href='profile.php'>" . "click here</a> to continue.<br><br>");
           }
       }
   }
