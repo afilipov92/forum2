@@ -37,7 +37,7 @@ class DB{
      * @return bool|mixed
      */
     public function requestSelectUserId($UserId){
-        $sth = $this->db->prepare("SELECT * FROM users WHERE id=:UserUd");
+        $sth = $this->db->prepare("SELECT * FROM users WHERE id=:UserId");
         $sth->execute(array('UserId' => $UserId));
         $mas = $sth->fetch(PDO::FETCH_ASSOC);
         if(!empty($mas)){
