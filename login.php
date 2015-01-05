@@ -20,7 +20,6 @@
           }
       }
   }
-  echo $_SERVER['HTTP_HOST'];
   echo <<<_END
       <form method='post' action='login.php'>$error
       <span class='fieldname'>Username</span><input type='text'
