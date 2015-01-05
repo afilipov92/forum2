@@ -6,10 +6,10 @@ $templ->setHtml(Template::getTemplate('form_registration'));
 
 $msg = "";
 
-FormRegistration::getFormData($ob);
+Form::getFormData($ob);
 
-if(FormRegistration::isFormSubmitted()){
-    $validateFormResult = FormRegistration::isFormVaild($ob, $db);
+if(Form::isFormSubmitted()){
+    $validateFormResult = Form::isFormVaild($ob, $db);
     if($validateFormResult !== true) {
         $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
     } else {
@@ -26,7 +26,7 @@ if(FormRegistration::isFormSubmitted()){
         }
     }
 }
-if(FormRegistration::isSuccess()){
+if(Form::isSuccess()){
     $templ->setHtml('Письмо для подтверждения регистрации было отправленно на ваш E-mail');
 } else{
     $templ->setHtml(Template::processTemplace($templ->getHtml(), array(
@@ -35,7 +35,7 @@ if(FormRegistration::isSuccess()){
         'password' => "",
         'passwordConfirm' => ""
     )));
-    $templ->setHtml(Template::processTemplace($templ->getHtml(), array('CAPTCHA' => FormRegistration::generateCaptcha())));
+    $templ->setHtml(Template::processTemplace($templ->getHtml(), array('CAPTCHA' => Form::generateCaptcha())));
 }
 
 $page = Template::processTemplace($pageTpl, array(

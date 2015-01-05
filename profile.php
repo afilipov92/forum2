@@ -12,9 +12,9 @@ if(!isset($_GET['id']) and isset($_SESSION['userId'])){
     die('You are not logged in. <a href="login.php">Log in please!</a>');
 }
 //The page edits data for registered  user
-if(FormRegistration::isFormSubmitted()){
-    FormRegistration::getFormData($ob);
-    $validateFormResult = FormRegistration::isFormVaild($ob, $db);
+if(Form::isFormSubmitted()){
+    Form::getFormData($ob);
+    $validateFormResult = Form::isFormVaild($ob, $db);
     if($result['password'] == md5($_POST['oldPassword'])){
         $db->updateUser($ob);
     } else {

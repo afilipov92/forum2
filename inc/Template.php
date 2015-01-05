@@ -6,6 +6,7 @@ class Template{
      * @var $html - html-код
      */
     private $html;
+    private $myList="";
 
     /**
      * Возвращает  шаблон по его имени, если он найден в папке шаблонов. иначе - пустую строку
@@ -50,6 +51,12 @@ class Template{
         return $tpl;
     }
 
+    public function setListCat($tpl, array $data){
+        foreach($data as $a){
+            $this->myList .= Template::processTemplace($tpl,$a);
+        }
+    }
+
     /**
      * устанавливает значение свойству html
      * @param $str
@@ -64,5 +71,13 @@ class Template{
      */
     public function getHtml(){
         return $this->html;
+    }
+
+    /**
+     * возвращает значение свойства myList
+     * @return mixed
+     */
+    public function getList(){
+        return $this->myList;
     }
 }

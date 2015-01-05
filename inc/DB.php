@@ -11,7 +11,7 @@ class DB{
     /**
      * соединение с базой данных
      */
-    function __construct(){
+    public function __construct(){
         try{
             $this->db = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8;', DB_USER, DB_PASSWORD);
         } catch(PDOException $e){
@@ -28,6 +28,13 @@ class DB{
         $ins = $this->db->prepare("INSERT INTO users (userName, userEmail, password, id_status, hash) VALUES (:userName, :userEmail, :password, :id_status, :hash)");
         return $ins->execute(array(
             'userName' => $Data->userName, 'userEmail' => $Data->userEmail, 'password' => md5($Data->password), 'id_status' => 2, 'hash' => $Data->hash
+        ));
+    }
+
+    public function saveCat(FormData $Data){
+        $ins = $this->db->prepare("INSERT INTO categories (catName, catText) VALUES (:catName, :catText)");
+        return $ins->execute(array(
+            'catName' => $Data->catName, 'catText' => $Data->catText
         ));
     }
 
@@ -126,8 +133,16 @@ class DB{
         $mas = $sth->fetch(PDO::FETCH_ASSOC);
         if(!empty($mas)){
             return $mas;
+        } else{
+            return false;
         }
-        else{
+    }
+
+    public function requestSelectCat(){
+        $mas = $this->db->query("SELECT * FROM categories", PDO::FETCH_ASSOC)->fetchAll();
+        if(!empty($mas)){
+            return $mas;
+        } else{
             return false;
         }
     }

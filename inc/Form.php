@@ -1,5 +1,5 @@
 <?php
-class FormRegistration{
+class Form{
     /**
      * Проверяет была ли отправлена форма
      * @return bool
@@ -41,7 +41,7 @@ class FormRegistration{
     }
 
     /**
-     * Проверяет валидность заполнения полей формы
+     * Проверяет валидность заполнения полей формы пользователя
      * @param FormData $ob
      * @param DB $db
      * @return array|bool
@@ -74,9 +74,27 @@ class FormRegistration{
             $resp = false;
             $errors['password'] = 'Пароли не совпадают';
         }
-        if(!FormRegistration::checkCaptchaAnswer($ob->captcha)){
+        if(!Form::checkCaptchaAnswer($ob->captcha)){
             $resp = false;
             $errors['captcha'] = 'Неправильный ответ';
+        }
+        if(!$resp){
+            return $errors;
+        } else {
+            return $resp;
+        }
+    }
+
+    public static function isFormVaildCat(FormData $ob){
+        $resp = true;
+        $errors = array();
+        if(strlen($ob->catName) < 4){
+            $resp = false;
+            $errors['catName'] = 'Название категории должно быть от 4 символов';
+        }
+        if(strlen($ob->catText) < 10){
+            $resp = false;
+            $errors['catText'] = 'Текст категории должен быть от 10 символов';
         }
         if(!$resp){
             return $errors;
