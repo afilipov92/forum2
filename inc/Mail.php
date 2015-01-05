@@ -5,8 +5,8 @@ class Mail{
         $mail = new PHPMailer();
         $message = "Уважаемый ".$ob->userName.",<br/>
             Спасибо за то, что Вы  создали аккаунт у нас. Для того чтобы активировать Ваш профайл нажмите на ссылку ниже:<br/>
-            <a href='http://localhost/forum/activation.php?userName=".$ob->userName."&hash=".$ob->hash."' target='_blank'>
-            http://localhost/forum/activation.php</a>";
+            <a href='http://".$_SERVER['HTTP_HOST']."/forum/activation.php?userName=".$ob->userName."&hash=".$ob->hash."' target='_blank'>
+            http://".$_SERVER['HTTP_HOST']."/forum/activation.php</a>";
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
         $mail->SMTPKeepAlive = true;
