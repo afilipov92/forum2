@@ -25,3 +25,10 @@ spl_autoload_register('my_autoload');
 $db = new DB();
 $templ = new Template();
 $ob = new FormData();
+
+
+if(empty($_SESSION['userName'])){
+    $login = "<a href='./login.php'>Авторизация</a> <a href='./registration.php'>Регистрация</a> ";
+} else{
+    $login = "<a href='profile.php'>".$_SESSION['userName']."</a> <a href='logout.php'>Выйти</a>";
+}

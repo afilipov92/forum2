@@ -5,6 +5,9 @@ $pageTpl = Template::getTemplate('page');
 if(!isset($_GET['id']) and isset($_SESSION['userId'])){
     $templ->setHtml(Template::getTemplate('myprofile'));
     $result=$db->requestSelectUserId($_SESSION['userId']);
+    if(isset($_GET['tpl'])){
+        $templ->setHtml(Template::getTemplate('editprofile'));
+    }
 } elseif (isset($_GET['id'])) {
     $templ->setHtml(Template::getTemplate('profile'));
     $result=$db->requestSelectUserId($_GET['id']);
@@ -29,6 +32,7 @@ $page = Template::processTemplace($pageTpl, array(
     'USERID' => $result['id'],
     'USERNAME' => $result['userName'],
     'USEREMAIL' => $result['userEmail'],
-    'EXTINFO' => $result['extInfo']
+    'EXTINFO' => $result['extInfo'],
+    'TPL' => '?tpl=editprofile'
 ));
 echo $page;
