@@ -15,7 +15,7 @@ if(isset($_SESSION['idStatus']) && $_SESSION['idStatus'] == 1){
             $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
         } else {
             if($db->saveCat($ob)){
-                header('Location: '.$_SERVER['REQUEST_URI']);
+                header('Location: ./index.php');
                 die;
             } else {
                 $msg = 'Ошибка добавления категории';

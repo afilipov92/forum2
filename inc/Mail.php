@@ -26,4 +26,16 @@ class Mail{
             return true;
         }
     }
+
+    public static function goMailTwo(FormData $ob){
+        $message = "Уважаемый ".$ob->userName.",<br/>
+            Спасибо за то, что Вы  создали аккаунт у нас. Для того чтобы активировать Ваш профайл нажмите на ссылку ниже:<br/>
+            <a href='http://".$_SERVER['HTTP_HOST']."/forum/activation.php?userName=".$ob->userName."&hash=".$ob->hash."' target='_blank'>
+            http://".$_SERVER['HTTP_HOST']."/forum/activation.php</a>";
+        $subject = 'Регистрация на форуме';
+        $headers = "From: Admin\r\n".
+            "MIME-Version: 1.0" . "\r\n" .
+            "Content-type: text/html; charset=UTF-8" . "\r\n";
+        return mail($ob->userEmail, $subject, $message, $headers);
+    }
 }

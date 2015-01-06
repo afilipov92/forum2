@@ -7,6 +7,12 @@ require_once('PHPMailer/PHPMailerAutoload.php');
 function my_autoload($className) {
     require_once __DIR__ . DIRECTORY_SEPARATOR . $className . '.php';
 }
+/*
+define('DB_HOST', 'mysql.hostinger.ru');
+define('DB_USER', 'u230910915_root');
+define('DB_PASSWORD', 'Blackpearl99');
+define('DB_NAME', 'u230910915_study');*/
+
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
