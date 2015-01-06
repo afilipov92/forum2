@@ -20,7 +20,7 @@ class DB{
     }
 
     /**
-     * добавляет новыого пользователя
+     * добавляет нового пользователя
      * @param FormData $Data
      * @return bool
      */
@@ -35,6 +35,18 @@ class DB{
         $ins = $this->db->prepare("INSERT INTO categories (catName, catText) VALUES (:catName, :catText)");
         return $ins->execute(array(
             'catName' => $Data->catName, 'catText' => $Data->catText
+        ));
+    }
+
+    /**
+     * add new theme
+     * @param FormData $Data
+     * @return bool
+     */
+    public function saveTheme(FormData $Data){
+        $ins = $this->db->prepare("INSERT INTO themes (themeName, themeText) VALUES (:themeName, :themeText)");
+        return $ins->execute(array(
+            'themeName' => $Data->themeName, 'themeText' => $Data->themeText
         ));
     }
 
@@ -146,4 +158,19 @@ class DB{
             return false;
         }
     }
+
+    /**
+     * выборка из таблицы theme
+     * @param
+     * @return bool|mixed
+     */
+    public function requestSelectTheme(){
+        $mas = $this->db->query("SELECT * FROM themes", PDO::FETCH_ASSOC)->fetchAll();
+        if(!empty($mas)){
+            return $mas;
+        } else{
+            return false;
+        }
+    }
+
 }
