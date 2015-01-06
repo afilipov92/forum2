@@ -81,6 +81,38 @@ class DB{
     }
 
     /**
+     * выборка из таблицы categories по catId
+     * @param $catId
+     * @return bool|mixed
+     */
+    public function requestSelectCatId($catId){
+        $sth = $this->db->prepare("SELECT * FROM categories WHERE id=:catId");
+        $sth->execute(array('catId' => $catId));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if(!empty($mas)){
+            return $mas;
+        } else{
+            return false;
+        }
+    }
+
+    /**
+     * выборка из таблицы themes по themeId
+     * @param $themeId
+     * @return bool|mixed
+     */
+    public function requestSelectThemeId($themeId){
+        $sth = $this->db->prepare("SELECT * FROM themes WHERE id=:themeId");
+        $sth->execute(array('themeId' => $themeId));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if(!empty($mas)){
+            return $mas;
+        } else{
+            return false;
+        }
+    }
+
+    /**
      * выборка из таблицы users по userName
      * @param $userName
      * @return bool|mixed
@@ -128,7 +160,6 @@ class DB{
             return false;
         }
     }
-
     /**
      * обновляет hash в таблице users
      * @param $id
