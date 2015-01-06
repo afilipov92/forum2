@@ -18,6 +18,7 @@
                   $_SESSION['password'] = $pass;
                   $_SESSION['userId'] = $result['id'];
                   $_SESSION['idStatus'] = $result['id_status'];
+                  header('Location: ./index.php');
                   die("You are now logged in. Please <a href='profile.php'>" . "click here</a> to continue.<br><br>");
               }
           }
