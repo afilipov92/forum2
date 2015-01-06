@@ -1,9 +1,9 @@
 <?php
   require_once 'inc/inc.php';
+
   if(!isset($_SESSION['userName'])){
       $str = "<div class='main'><h3>Please enter your details to log in</h3>";
       $error = $user = $pass = "";
-
       if (isset($_POST['userName'])){
           $user = $_POST['userName'];
           $pass = $_POST['password'];
@@ -32,3 +32,4 @@
           <a href='registration.php'>Or click here for registration</a>";
       echo $str;
   }
+
