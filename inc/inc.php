@@ -28,7 +28,7 @@ $ob = new FormData();
 
 
 if(empty($_SESSION['userName'])){
-    $login = "<a href='./login.php'>Авторизация</a> <a href='./registration.php'>Регистрация</a> ";
+    $login = "<div align='right'><a href='./login.php'>Авторизация</a> <a href='./registration.php'>Регистрация</a></div>";
 } else{
-    $login = "<a href='profile.php'>".$_SESSION['userName']."</a> <a href='logout.php'>Выйти</a>";
+    $login = "<div align='right'><a href='profile.php'>".$_SESSION['userName']."</a> <a href='logout.php'>Выйти</a></div>";
 }

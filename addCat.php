@@ -32,6 +32,7 @@ if(isset($_SESSION['idStatus']) && $_SESSION['idStatus'] == 1){
         'FORM' => $templ->getHtml(),
         'MSG' => $msg,
         'CAT' => "",
+		'TITLE-CAT' => "",
         'LOGIN' => $login
     ));
     echo $page;

@@ -7,7 +7,7 @@ $catTpl = Template::getTemplate('cat');
 $msg = "";
 
 if(!empty($_SESSION['idStatus']) && $_SESSION['idStatus'] == 1){
-   $templ->setHtml("<form method=\"GET\" action=\"addCat.php\">
+   $templ->setHtml("<form method=\"GET\" align=\"right\" action=\"addCat.php\">
                     <input type=\"submit\" name=\"submit\" value=\"Добавить категорию\"/>
                     </form>"
    );
@@ -21,7 +21,8 @@ if($selectCat){
 $page = Template::processTemplace($pageTpl, array(
     'FORM' => $templ->getHtml(),
     'MSG' => $msg,
-    'CAT' => $templ->getList(),
-    'LOGIN' => $login
+    'CAT' => '<div class="list-cat">'.$templ->getList().'</div>',
+    'LOGIN' => $login,
+	'TITLE-CAT' => '<div class="list-name">Категории</div>'
 ));
 echo $page;

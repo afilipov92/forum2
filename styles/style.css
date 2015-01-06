@@ -6,3 +6,50 @@
     border: 1px solid black;
     border-radius: 6px;
 }
+
+.cat{
+	padding:6px;
+	margin: 0 10px 0 10px;
+	border: 1px solid grey;
+	border-bottom:hidden;
+	background:#F0F8FF;
+}
+
+.cat:last-child{
+	margin-bottom: 10px;
+	border-bottom: 1px solid grey;
+}
+
+.cat:first-child{
+	margin-top: 10px;
+}
+
+.descrip{
+	font-size:11px;
+	margin:0;
+	padding-left: 8px;
+	color:#808080;
+}
+
+.cat-name{
+	margin: 0px;
+}
+
+.cat-link{
+	font-size:18px;
+	text-decoration: none;
+	color:#006;
+}
+
+.list-cat{
+	border: 1px solid grey;
+	background:#bde0ff;
+}
+
+.list-name{
+	font-size:24px;
+	color:white;
+	padding-left:5px;
+	background:#1560bd;
+}
+	
