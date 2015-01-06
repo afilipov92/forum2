@@ -1,0 +1,20 @@
+<div id="block">
+    <p align="center" ><b>Форма добавления новой темы</b></p>
+    <form name="form6" class="form1" method="post">
+        <div>
+            <label for="themeName">Название темы *:</label>
+            <br/>
+            <input id="themeName" type="text" name="themeName" required value="{{themeName}}">
+            <p data-name="themeName"></p>
+        </div>
+        <div>
+            <label for="themeText">Первое сообщение вашей темы *:</label>
+            <br/>
+            <textarea id="themeText" name="themeText">{{themeText}}</textarea>
+            <p data-name="themeText"></p>
+        </div>
+        <div>
+            <input type="submit" name="submit" id="submit" value="Добавить тему">
+        </div>
+    </form>
+</div>

@@ -7,7 +7,8 @@
     border-radius: 6px;
 }
 
-.cat{
+.cat,
+.theme{
 	padding:6px;
 	margin: 0 10px 0 10px;
 	border: 1px solid grey;
@@ -15,12 +16,14 @@
 	background:#F0F8FF;
 }
 
-.cat:last-child{
+.cat:last-child,
+.theme:last-child{
 	margin-bottom: 10px;
 	border-bottom: 1px solid grey;
 }
 
-.cat:first-child{
+.cat:first-child
+.theme:first-child{
 	margin-top: 10px;
 }
 
@@ -31,7 +34,8 @@
 	color:#808080;
 }
 
-.cat-name{
+.cat-name,
+.theme-name{
 	margin: 0px;
 }
 
@@ -41,7 +45,8 @@
 	color:#006;
 }
 
-.list-cat{
+.list-cat,
+.list-theme{
 	border: 1px solid grey;
 	background:#bde0ff;
 }

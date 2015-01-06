@@ -51,12 +51,25 @@ class Template{
         return $tpl;
     }
 
+    /**
+     * набор списка категорий
+     * @param $str
+     */
     public function setListCat($tpl, array $data){
         foreach($data as $a){
             $this->myList .= Template::processTemplace($tpl,$a);
         }
     }
 
+    /**
+     * набор списка тем
+     * @param $str
+     */
+    public function setListTheme($tpl, array $data){
+        foreach($data as $a){
+            $this->myList .= Template::processTemplace($tpl,$a);
+        }
+    }
     /**
      * устанавливает значение свойству html
      * @param $str

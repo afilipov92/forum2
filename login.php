@@ -1,8 +1,8 @@
 <?php
   require_once 'inc/inc.php';
-  $pageTpl = Template::getTemplate('page');
+
   if(!isset($_SESSION['userName'])){
-      $str = "<div id='block'><p align=\"center\"><b>Авторизация</b></p>";
+      $str = "<div class='main'><h3>Please enter your details to log in</h3>";
       $error = $user = $pass = "";
       if (isset($_POST['userName'])){
           $user = $_POST['userName'];
@@ -18,24 +18,18 @@
                   $_SESSION['password'] = $pass;
                   $_SESSION['userId'] = $result['id'];
                   $_SESSION['idStatus'] = $result['id_status'];
-                  header('Location: ./index.php');
-                  die("You are now logged in. Please <a href='profile.php'>" . "click here</a> to continue.<br><br>");
+                  die("You are now logged in. Please <a href='index.php'>" . "click here</a> to continue.<br><br>");
               }
           }
       }
       $str .= "
           <form method='post' action='login.php'>$error
-          <span class='fieldname'>Логин&nbsp;&nbsp;&nbsp;:  </span><input type='text'
+          <span class='fieldname'>Username</span><input type='text'
           maxlength='16' name='userName' value='$user'><br>
-          <span class='fieldname'>Пароль&nbsp;: </span><input type='password'
+          <span class='fieldname'>Password</span><input type='password'
           maxlength='16' name='password' value='$pass'><br>
-          <input type=\"submit\" name=\"submit\" id=\"submit\" value=\"Войти\"><br>
-          <a href='registration.php'>Регистрация</a></form></div>";
-
-      $page = Template::processTemplace($pageTpl, array(
-          'FORM' => $str,
-          'MSG' => ""
-      ));
-      echo $page;
+          <input type=\"submit\" name=\"submit\" id=\"submit\" value=\"Log in\"><br>
+          <a href='registration.php'>Or click here for registration</a>";
+      echo $str;
   }
 
