@@ -1,8 +1,8 @@
 <?php
   require_once 'inc/inc.php';
-
+  $pageTpl = Template::getTemplate('page');
   if(!isset($_SESSION['userName'])){
-      $str = "<div class='main'><h3>Please enter your details to log in</h3>";
+      $str = "<div id='block'><p align=\"center\"><b>Авторизация</b></p>";
       $error = $user = $pass = "";
       if (isset($_POST['userName'])){
           $user = $_POST['userName'];
@@ -25,12 +25,17 @@
       }
       $str .= "
           <form method='post' action='login.php'>$error
-          <span class='fieldname'>Username</span><input type='text'
+          <span class='fieldname'>Логин</span><input type='text'
           maxlength='16' name='userName' value='$user'><br>
-          <span class='fieldname'>Password</span><input type='password'
+          <span class='fieldname'>Пароль</span><input type='password'
           maxlength='16' name='password' value='$pass'><br>
-          <input type=\"submit\" name=\"submit\" id=\"submit\" value=\"Log in\"><br>
-          <a href='registration.php'>Or click here for registration</a>";
-      echo $str;
+          <input type=\"submit\" name=\"submit\" id=\"submit\" value=\"Войти\"><br>
+          <a href='registration.php'>Регистрация</a></form></div>";
+
+      $page = Template::processTemplace($pageTpl, array(
+          'FORM' => $str,
+          'MSG' => ""
+      ));
+      echo $page;
   }
 
