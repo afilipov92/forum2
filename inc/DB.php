@@ -31,6 +31,11 @@ class DB{
         ));
     }
 
+    /**
+     * добавляет новую категорию
+     * @param FormData $Data
+     * @return bool
+     */
     public function saveCat(FormData $Data){
         $ins = $this->db->prepare("INSERT INTO categories (catName, catText) VALUES (:catName, :catText)");
         return $ins->execute(array(
@@ -170,6 +175,12 @@ class DB{
         return $sth->execute(array('hash' => 'actived', 'id' => $id));
     }
 
+    /**
+     * выборка по пользователю и паролю
+     * @param $userName
+     * @param $pass
+     * @return bool|mixed
+     */
     public function requestSelectUser($userName, $pass){
         $sth = $this->db->prepare("SELECT * FROM users WHERE userName = :userName AND password = :pass");
         $sth->execute(array('userName' => $userName, 'pass' => $pass));
@@ -181,6 +192,10 @@ class DB{
         }
     }
 
+    /**
+     * выбирает все категории
+     * @return array|bool
+     */
     public function requestSelectCat(){
         $mas = $this->db->query("SELECT * FROM categories", PDO::FETCH_ASSOC)->fetchAll();
         if(!empty($mas)){

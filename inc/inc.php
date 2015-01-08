@@ -36,7 +36,7 @@ $ob = new FormData();
 
 
 if(empty($_SESSION['userName'])){
-    $login = "<div align='right'><a href='./login.php'>Авторизация</a> <a href='./registration.php'>Регистрация</a></div>";
+    $login = "<div align='right'><a href='".Utility::getUrl('./login.php')."'>Авторизация</a> <a href='".Utility::getUrl('./registration.php')."'>Регистрация</a></div>";
 } else{
-    $login = "<div align='right'><a href='profile.php'>".$_SESSION['userName']."</a> <a href='logout.php'>Выйти</a></div>";
+    $login = "<div align='right'><a href='".Utility::getUrl('profile.php')."'>".$_SESSION['userName']."</a> <a href='".Utility::getUrl('logout.php')."'>Выйти</a></div>";
 }
