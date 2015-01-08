@@ -1,7 +1,7 @@
 <?php
 require_once('inc/inc.php');
 
-if(!empty($_SESSION['userName'])){
+if(Utility::isUser()){
     $templ->setHtml(Template::getTemplate('form_add_theme'));
     $pageTpl = Template::getTemplate('index');
     $msg = "";
@@ -14,7 +14,7 @@ if(!empty($_SESSION['userName'])){
             $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
         } else {
             if($db->saveTheme($ob)){
-                header('Location: '.$_SERVER['REQUEST_URI']);
+                header('Location: '.Utility::getUrl($_SERVER['REQUEST_URI']));
                 die;
             } else {
                 $msg = 'Ошибка добавления темы';
@@ -36,6 +36,6 @@ if(!empty($_SESSION['userName'])){
     ));
     echo $page;
 } else{
-    header('Location: http://'.$_SERVER['HTTP_HOST'].'/forum/index.php');
+    header('Location: '.Utility::getUrl());
     die;
 }

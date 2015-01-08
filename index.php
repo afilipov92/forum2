@@ -6,7 +6,7 @@ $pageTpl = Template::getTemplate('index');
 $catTpl = Template::getTemplate('cat');
 $msg = "";
 
-if(!empty($_SESSION['idStatus']) && $_SESSION['idStatus'] == 1){
+if(Utility::isAdmin()){
    $templ->setHtml("<form method=\"GET\" align=\"right\" action=\"addCat.php\">
                     <input type=\"submit\" name=\"submit\" value=\"Добавить категорию\"/>
                     </form>"
