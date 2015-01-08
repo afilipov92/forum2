@@ -219,4 +219,46 @@ class DB{
         }
     }
 
+    /**
+     * выборка сообщений для отображения в теме
+     * @param $UserId
+     * @return bool|mixed
+     */
+    public function requestSelectMessages($themeId){
+        $sth = $this->db->query("SELECT * FROM messages WHERE (idtopic=:themeId AND isdeleted=1) ");
+        $sth->execute(array('themeId' => $themeId));
+        $mas = $sth->fetch(PDO::FETCH_ASSOC);
+        if(!empty($mas)){
+            return $mas;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * запись сообщения
+     * @param FormData $Data
+     * @return bool
+     */
+    public function saveMessage(FormData $Data){
+        $ins = $this->db->prepare("INSERT INTO messages (messageText, idtopic, iduser) VALUES (:messageText, :idtopic, :iduser)");
+        return $ins->execute(array(
+            'messageText' => $Data->messageText,
+            'idtopic' => $_GET('themeId'),
+            'iduser' => $_GET('userId')
+        ));
+    }
+
+    /**
+     * пометка сообщений как удалённых
+     * @param $checkedMessages
+     * @return bool
+     */
+    public function deleteMessage($checkedMessages) {
+        $ins = $this->db->prepare("UPDATE messages SET (isdeleted=:isdeleted WHERE id=:id)");
+        return $ins->execute(array(
+            'isdeleted' => 2,
+            'id' => $checkedMessages
+        ));
+    }
 }
