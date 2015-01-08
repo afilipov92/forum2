@@ -85,6 +85,11 @@ class Form{
         }
     }
 
+    /**
+     * Проверяет валидность заполнения полей формы категории
+     * @param FormData $ob
+     * @return array|bool
+     */
     public static function isFormVaildCat(FormData $ob){
         $resp = true;
         $errors = array();
