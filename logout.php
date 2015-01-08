@@ -6,3 +6,4 @@
     }
     header('Location: '.Utility::getUrl());
     die;
+

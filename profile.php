@@ -12,7 +12,7 @@ if(!isset($_GET['id']) and isset($_SESSION['userId'])){
     $templ->setHtml(Template::getTemplate('profile'));
     $result=$db->requestSelectUserId($_GET['id']);
 } else {
-    die('You are not logged in. <a href="'.Utility::getUrl('login.php').'">Log in please!</a>');
+    die('Вы не авторизованы. <a href="'.Utility::getUrl('login.php').'">Пожалуйста, авторизуйтесь!</a>');
 }
 //The page edits data for registered  user
 if(Form::isFormSubmitted()){
