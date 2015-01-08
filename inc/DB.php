@@ -49,9 +49,10 @@ class DB{
      * @return bool
      */
     public function saveTheme(FormData $Data){
-        $ins = $this->db->prepare("INSERT INTO themes (themeName, themeText) VALUES (:themeName, :themeText)");
+        $ins = $this->db->prepare("INSERT INTO themes (themeName, themeText, id_cat) VALUES (:themeName, :themeText, :id_cat)");
+        var_dump($ins);
         return $ins->execute(array(
-            'themeName' => $Data->themeName, 'themeText' => $Data->themeText
+            'themeName' => $Data->themeName, 'themeText' => $Data->themeText, 'id_cat' => $Data->id_cat
         ));
     }
 
@@ -206,12 +207,15 @@ class DB{
     }
 
     /**
+
      * выборка из таблицы theme
      * @param
      * @return bool|mixed
      */
-    public function requestSelectTheme(){
-        $mas = $this->db->query("SELECT * FROM themes", PDO::FETCH_ASSOC)->fetchAll();
+    public function requestSelectTheme($catid){
+        $sth = $this->db->prepare("SELECT * FROM themes WHERE id_cat=:catid");
+        $sth->execute(array('catid' => $catid));
+        $mas = $sth->fetchAll(PDO::FETCH_ASSOC);
         if(!empty($mas)){
             return $mas;
         } else{

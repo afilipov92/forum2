@@ -15,6 +15,14 @@ class Form{
         return (isset($_GET['success']) AND !empty($_GET['success']));
     }
 
+    public static function getCatId(){
+        if (isset($_GET['catid']) && intval($_GET['catid'])){
+            return intval($_GET['catid']);
+        } else{
+            return false;
+        }
+    }
+
     /**
      * устанавливает значения массива из формы
      * @param FormData $ob
@@ -100,6 +108,24 @@ class Form{
         if(strlen($ob->catText) < 10){
             $resp = false;
             $errors['catText'] = 'Текст категории должен быть от 10 символов';
+        }
+        if(!$resp){
+            return $errors;
+        } else {
+            return $resp;
+        }
+    }
+
+    public static function isFormVaildTheme(FormData $ob){
+        $resp = true;
+        $errors = array();
+        if(strlen($ob->themeName) < 4){
+            $resp = false;
+            $errors['themeText'] = 'Название категории должно быть от 4 символов';
+        }
+        if(strlen($ob->themeText) < 10){
+            $resp = false;
+            $errors['themeText'] = 'Текст категории должен быть от 10 символов';
         }
         if(!$resp){
             return $errors;
