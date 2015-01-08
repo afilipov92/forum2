@@ -7,17 +7,21 @@ if(Utility::isUser()){
     $msg = "";
 
     Form::getFormData($ob);
-    $ob->id_cat = $_GET['id_cat'];
+    $ob->id_cat = Form::getCatId();
     if(Form::isFormSubmitted()){
-        $validateFormResult = Form::isFormVaildTheme($ob);
-        if($validateFormResult!== true) {
-            $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
-        } else {
-            if($db->saveTheme($ob)){
-                header('Location: '.Utility::getUrl($_SERVER['REQUEST_URI']));
-                die;
+        if($ob->id_cat === false){
+            $msg = "Ошибка, вероятно неверная категория";
+        } else{
+            $validateFormResult = Form::isFormVaildTheme($ob);
+            if($validateFormResult!== true) {
+                $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
             } else {
-                $msg = 'Ошибка добавления темы';
+                if($db->saveTheme($ob)){
+                    header('Location: '.Utility::getUrl($_SERVER['REQUEST_URI']));
+                    die;
+                } else {
+                    $msg = 'Ошибка добавления темы';
+                }
             }
         }
     }

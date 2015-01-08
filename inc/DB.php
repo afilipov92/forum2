@@ -50,7 +50,6 @@ class DB{
      */
     public function saveTheme(FormData $Data){
         $ins = $this->db->prepare("INSERT INTO themes (themeName, themeText, id_cat) VALUES (:themeName, :themeText, :id_cat)");
-        var_dump($ins);
         return $ins->execute(array(
             'themeName' => $Data->themeName, 'themeText' => $Data->themeText, 'id_cat' => $Data->id_cat
         ));

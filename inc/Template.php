@@ -53,7 +53,8 @@ class Template{
 
     /**
      * набор списка категорий
-     * @param $str
+     * @param $tpl
+     * @param array $data
      */
     public function setListCat($tpl, array $data){
         foreach($data as $a){

@@ -16,8 +16,8 @@ class Form{
     }
 
     public static function getCatId(){
-        if (isset($_GET['catid']) && intval($_GET['catid'])){
-            return intval($_GET['catid']);
+        if (isset($_GET['id_cat']) && intval($_GET['id_cat'])){
+            return intval($_GET['id_cat']);
         } else{
             return false;
         }

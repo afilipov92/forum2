@@ -9,7 +9,7 @@ $msg = "";
 
 $catid = Form::getCatId();
 if($catid){
-    $selectTheme = $db->requestSelectTheme($_GET['catid']);
+    $selectTheme = $db->requestSelectTheme($catid);
     if($selectTheme){
         $templ->setListTheme($themeTpl, $selectTheme);
     }
