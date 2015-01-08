@@ -1,7 +1,7 @@
 <?php
   require_once 'inc/inc.php';
   $pageTpl = Template::getTemplate('page');
-  if(!isset($_SESSION['userName'])){
+  if(!Utility::isUser()){
       $str = "<div id='block'><p align=\"center\"><b>Авторизация</b></p>";
       $error = $user = $pass = "";
       if (isset($_POST['userName'])){
@@ -18,8 +18,8 @@
                   $_SESSION['password'] = $pass;
                   $_SESSION['userId'] = $result['id'];
                   $_SESSION['idStatus'] = $result['id_status'];
-                  header('Location: ./index.php');
-                  die("You are now logged in. Please <a href='profile.php'>" . "click here</a> to continue.<br><br>");
+                  header('Location: '.Utility::getUrl());
+                  die();
               }
           }
       }
@@ -30,7 +30,7 @@
           <span class='fieldname'>Пароль&nbsp;: </span><input type='password'
           maxlength='16' name='password' value='$pass'><br>
           <input type=\"submit\" name=\"submit\" id=\"submit\" value=\"Войти\"><br>
-          <a href='registration.php'>Регистрация</a></form></div>";
+          <a href='".Utility::getUrl('registration.php')."'>Регистрация</a></form></div>";
 
       $page = Template::processTemplace($pageTpl, array(
           'FORM' => $str,

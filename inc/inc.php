@@ -26,6 +26,8 @@ define('MAIL_PORT', 465);
 define('MAIL_USERNAME', 'al.oz2015@yandex.ru');
 define('MAIL_PASSWORD', 'Paradise90');
 
+define('ID_ADMIN', 1);
+
 spl_autoload_register('my_autoload');
 
 $db = new DB();

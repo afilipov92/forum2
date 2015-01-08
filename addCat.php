@@ -2,7 +2,7 @@
 
 require_once('inc/inc.php');
 
-if(isset($_SESSION['idStatus']) && $_SESSION['idStatus'] == 1){
+if(Utility::isAdmin()){
     $templ->setHtml(Template::getTemplate('form_add_cat'));
     $pageTpl = Template::getTemplate('index');
     $msg = "";
@@ -15,7 +15,7 @@ if(isset($_SESSION['idStatus']) && $_SESSION['idStatus'] == 1){
             $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
         } else {
             if($db->saveCat($ob)){
-                header('Location: ./index.php');
+                header('Location: '.Utility::getUrl());
                 die;
             } else {
                 $msg = 'Ошибка добавления категории';
@@ -37,6 +37,6 @@ if(isset($_SESSION['idStatus']) && $_SESSION['idStatus'] == 1){
     ));
     echo $page;
 } else{
-    header('Location: http://'.$_SERVER['HTTP_HOST'].'/forum/index.php');
+    header('Location: '.Utility::getUrl());
     die;
 }

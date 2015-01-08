@@ -6,7 +6,7 @@ $pageTpl = Template::getTemplate('index');
 $themeTpl = Template::getTemplate('theme');
 $msg = "";
 
-if(!empty($_SESSION['userName'])){
+if(Utility::isUser()){
     $templ->setHtml("<form method=\"GET\" align=\"right\" action=\"addTheme.php\">
                     <input type=\"submit\" name=\"submit\" value=\"Добавить тему\"/>
                     </form>"
