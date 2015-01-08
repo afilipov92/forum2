@@ -8,11 +8,11 @@
           $user = $_POST['userName'];
           $pass = $_POST['password'];
           if ($user == "" || $pass == "")
-              $error = "Not all fields were entered<br>";
+              $error = "Не все поля формы были заполнены<br>";
           else {
               $result = $db->requestSelectUser($user, md5($pass));
               if (!$result){
-                  $error = "<span class='error'>Username/Password invalid</span><br><br>";
+                  $error = "<span class='error'>Имя пользователя/Пароль не существует</span><br><br>";
               } else {
                   $_SESSION['userName'] = $user;
                   $_SESSION['password'] = $pass;
