@@ -7,9 +7,9 @@ if(Utility::isUser()){
     $msg = "";
 
     Form::getFormData($ob);
-
+    $ob->id_cat = $_GET['id_cat'];
     if(Form::isFormSubmitted()){
-        $validateFormResult = Form::isFormVaildCat($ob);
+        $validateFormResult = Form::isFormVaildTheme($ob);
         if($validateFormResult!== true) {
             $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
         } else {
