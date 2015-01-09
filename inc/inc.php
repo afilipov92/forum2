@@ -4,7 +4,7 @@ session_start();
 
 require_once('PHPMailer/PHPMailerAutoload.php');
 
-function my_autoload($className) {
+function autoload($className) {
     require_once __DIR__ . DIRECTORY_SEPARATOR . $className . '.php';
 }
 /*
@@ -27,8 +27,9 @@ define('MAIL_USERNAME', 'al.oz2015@yandex.ru');
 define('MAIL_PASSWORD', 'Paradise90');
 
 define('ID_ADMIN', 1);
+define('ID_USER', 2);
 
-spl_autoload_register('my_autoload');
+spl_autoload_register('autoload');
 
 $db = new DB();
 $templ = new Template();

@@ -15,6 +15,11 @@ class Form{
         return (isset($_GET['success']) AND !empty($_GET['success']));
     }
 
+    /**
+     * возвращает id_cat, если он нормально задан, иначе
+     * false
+     * @return bool|int
+     */
     public static function getCatId(){
         if (isset($_GET['id_cat']) && intval($_GET['id_cat'])){
             return intval($_GET['id_cat']);
@@ -31,6 +36,11 @@ class Form{
         foreach($_POST as $key => $val){
             $ob->$key = isset($_POST[$key])? trim(strip_tags(htmlspecialchars($_POST[$key]))): "";
         }
+       /* $ob->userName = isset($_POST['userName'])? trim(strip_tags($_POST['userName'])): "";
+        $ob->userEmail = isset($_POST['userEmail'])? trim(strip_tags($_POST['userEmail'])): "";
+        $ob->password = isset($_POST['password'])? trim(strip_tags($_POST['password'])): "";
+        $ob->passwordConfirm = isset($_POST['passwordConfirm'])? trim(strip_tags($_POST['passwordConfirm'])): "";
+        $ob->captcha = isset($_POST['captcha'])? trim(htmlspecialchars($_POST['captcha'])): "";*/
     }
 
     /**
@@ -111,6 +121,11 @@ class Form{
         }
     }
 
+    /**
+     * Проверяет валидность заполнения полей формы тем
+     * @param FormData $ob
+     * @return array|bool
+     */
     public static function isFormVaildTheme(FormData $ob){
         $resp = true;
         $errors = array();

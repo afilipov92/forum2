@@ -16,7 +16,7 @@ if(Utility::isUser()){
             if($validateFormResult!== true) {
                 $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
             } else {
-                if($db->saveTheme($ob)){
+                if($db->addTheme($ob)){
                     header('Location: '.Utility::getUrl($_SERVER['REQUEST_URI']));
                     die;
                 } else {

@@ -4,13 +4,13 @@ require_once('inc/inc.php');
 $pageTpl = Template::getTemplate('page');
 if(!isset($_GET['id']) and isset($_SESSION['userId'])){
     $templ->setHtml(Template::getTemplate('myprofile'));
-    $result=$db->requestSelectUserId($_SESSION['userId']);
+    $result=$db->requestSelect($_SESSION['userId'], 'users');
     if(isset($_GET['tpl'])){
         $templ->setHtml(Template::getTemplate('editprofile'));
     }
 } elseif (isset($_GET['id'])) {
     $templ->setHtml(Template::getTemplate('profile'));
-    $result=$db->requestSelectUserId($_GET['id']);
+    $result=$db->requestSelect($_GET['id'], 'users');
 } else {
     die('Вы не авторизованы. <a href="'.Utility::getUrl('login.php').'">Пожалуйста, авторизуйтесь!</a>');
 }

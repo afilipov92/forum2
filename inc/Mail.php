@@ -12,10 +12,10 @@ class Mail{
         $mail->SMTPKeepAlive = true;
         $mail->SMTPSecure = SMTP_SEC;
         $mail->Host = MAIL_HOST;
-        $mail->Port = MAIL_PORT;*/
-
+        $mail->Port = MAIL_PORT;
         $mail->Username = MAIL_USERNAME;
-        $mail->Password = MAIL_PASSWORD;
+        $mail->Password = MAIL_PASSWORD;*/
+
         $mail->SetFrom(MAIL_USERNAME);
         $mail->CharSet = CHAR_SET;
         $mail->Subject = 'Регистрация на форуме';

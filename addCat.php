@@ -14,7 +14,7 @@ if(Utility::isAdmin()){
         if($validateFormResult!== true) {
             $templ->setHtml($templ->processTemplateErrorOutput($validateFormResult));
         } else {
-            if($db->saveCat($ob)){
+            if($db->addCat($ob)){
                 header('Location: '.Utility::getUrl());
                 die;
             } else {

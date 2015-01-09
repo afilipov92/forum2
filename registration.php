@@ -16,7 +16,7 @@ if(!Utility::isUser()){
         } else {
             $ob->hash = md5($ob->userName);
             if(Mail::goMail($ob)){
-                if($db->saveUser($ob)) {
+                if($db->addUser($ob)) {
                     header('Location: '.Utility::getUrl($_SERVER['PHP_SELF'], array(
                             'success' => 1
                         )));

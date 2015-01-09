@@ -24,10 +24,10 @@ class DB{
      * @param FormData $Data
      * @return bool
      */
-    public function saveUser(FormData $Data){
+    public function addUser(FormData $Data){
         $ins = $this->db->prepare("INSERT INTO users (userName, userEmail, password, id_status, hash) VALUES (:userName, :userEmail, :password, :id_status, :hash)");
         return $ins->execute(array(
-            'userName' => $Data->userName, 'userEmail' => $Data->userEmail, 'password' => md5($Data->password), 'id_status' => 2, 'hash' => $Data->hash
+            'userName' => $Data->userName, 'userEmail' => $Data->userEmail, 'password' => md5($Data->password), 'id_status' => ID_USER, 'hash' => $Data->hash
         ));
     }
 
@@ -36,7 +36,7 @@ class DB{
      * @param FormData $Data
      * @return bool
      */
-    public function saveCat(FormData $Data){
+    public function addCat(FormData $Data){
         $ins = $this->db->prepare("INSERT INTO categories (catName, catText) VALUES (:catName, :catText)");
         return $ins->execute(array(
             'catName' => $Data->catName, 'catText' => $Data->catText
@@ -48,7 +48,7 @@ class DB{
      * @param FormData $Data
      * @return bool
      */
-    public function saveTheme(FormData $Data){
+    public function addTheme(FormData $Data){
         $ins = $this->db->prepare("INSERT INTO themes (themeName, themeText, id_cat) VALUES (:themeName, :themeText, :id_cat)");
         return $ins->execute(array(
             'themeName' => $Data->themeName, 'themeText' => $Data->themeText, 'id_cat' => $Data->id_cat
@@ -74,9 +74,9 @@ class DB{
      * @param $UserId
      * @return bool|mixed
      */
-    public function requestSelectUserId($UserId){
-        $sth = $this->db->prepare("SELECT * FROM users WHERE id=:UserId");
-        $sth->execute(array('UserId' => $UserId));
+    public function requestSelect($id, $table){
+        $sth = $this->db->prepare("SELECT * FROM $table WHERE id=:id");
+        $sth->execute(array('id' => $id));
         $mas = $sth->fetch(PDO::FETCH_ASSOC);
         if(!empty($mas)){
             return $mas;
