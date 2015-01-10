@@ -1,0 +1,23 @@
+  RewriteEngine on
+# Устанавливаем базовый адрес
+# RewriteBase /forum/
+# Проверяем на существование директорию
+RewriteCond %{REQUEST_FILENAME} !-d
+# Проверяем на существование файл
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+RewriteRule ^cat-(\d+)$ cat.php?id_cat=$1 [L]
+RewriteRule ^addCat$ addCat.php [L]
+RewriteRule ^profile$ profile.php [L]
+RewriteRule ^logout$ logout.php [L]
+RewriteRule ^login$ login.php [L]
+RewriteRule ^registration-([0-9])$ registration.php?success=$1 [L]
+RewriteRule ^registration$ registration.php [L]
+RewriteRule ^forum/ index.php [L]
+RewriteRule ^addTheme$ addTheme.php [L]
+RewriteRule ^activation-(\w+)-(\w+)$ activation.php?userName=$1&hash=$2 [L]
+RewriteRule ^theme-(\d+)$ theme.php?themeid=$1 [L]
+RewriteRule ^editprofile$ profile.php?tpl=editprofile [L]
+
+

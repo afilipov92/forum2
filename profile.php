@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once('inc/inc.php');
 //Output page views user profile
 $pageTpl = Template::getTemplate('page');
@@ -36,3 +37,8 @@ $page = Template::processTemplace($pageTpl, array(
     'TPL' => '?tpl=editprofile'
 ));
 echo $page;
+
+$str = ob_get_clean();
+$str = preg_replace('/profile\.php/', 'profile', $str);
+$str = preg_replace('/\?tpl=editprofile/', 'editprofile', $str);
+echo $str;

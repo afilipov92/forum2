@@ -1,4 +1,5 @@
 <?php
+  ob_start();
   require_once 'inc/inc.php';
   $pageTpl = Template::getTemplate('page');
   if(!Utility::isUser()){
@@ -38,3 +39,9 @@
       ));
       echo $page;
   }
+
+   $str = ob_get_clean();
+
+   $str = preg_replace('/login\.php/', 'login', $str);
+   $str = preg_replace('/registration\.php/', 'registration', $str);
+echo $str;

@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once('inc/inc.php');
 
 if(Utility::isUser()){
@@ -43,3 +44,10 @@ if(Utility::isUser()){
     header('Location: '.Utility::getUrl());
     die;
 }
+
+$str = ob_get_clean();
+
+$str = preg_replace('/profile\.php/', 'profile', $str);
+$str = preg_replace('/logout\.php/', 'logout', $str);
+$str = preg_replace('/cat\.php\?id_cat=(\d+)/', 'cat-$1', $str);
+echo $str;

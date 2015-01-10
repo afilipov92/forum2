@@ -1,6 +1,8 @@
 <?php
 
+ob_start();
 require_once('inc/inc.php');
+
 
 $pageTpl = Template::getTemplate('index');
 $catTpl = Template::getTemplate('cat');
@@ -25,4 +27,15 @@ $page = Template::processTemplace($pageTpl, array(
     'LOGIN' => $login,
 	'TITLE-CAT' => '<div class="list-name">Категории</div>'
 ));
+
 echo $page;
+
+$str = ob_get_clean();
+
+$str = preg_replace('/addCat\.php/', 'addCat', $str);
+$str = preg_replace('/profile\.php/', 'profile', $str);
+$str = preg_replace('/logout\.php/', 'logout', $str);
+$str = preg_replace('/login\.php/', 'login', $str);
+$str = preg_replace('/registration\.php/', 'registration', $str);
+$str = preg_replace('/cat\.php\?id_cat=(\d+)/', 'cat-$1', $str);
+echo $str;

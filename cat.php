@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require_once('inc/inc.php');
 
 $pageTpl = Template::getTemplate('index');
@@ -31,3 +31,11 @@ $page = Template::processTemplace($pageTpl, array(
     'TITLE-CAT' => '<div class="list-name">Темы</div>',
 ));
 echo $page;
+
+$str = ob_get_clean();
+
+$str = preg_replace('/addTheme\.php/', 'addTheme', $str);
+$str = preg_replace('/profile\.php/', 'profile', $str);
+$str = preg_replace('/logout\.php/', 'logout', $str);
+$str = preg_replace('/theme\.php\?themeid=(\d)/', 'theme-$1', $str);
+echo $str;

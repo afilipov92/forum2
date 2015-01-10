@@ -1,4 +1,5 @@
 <?php
+
 require_once('inc/inc.php');
 
 if(!Utility::isUser()){
@@ -17,9 +18,7 @@ if(!Utility::isUser()){
             $ob->hash = md5($ob->userName);
             if(Mail::goMail($ob)){
                 if($db->addUser($ob)) {
-                    header('Location: '.Utility::getUrl($_SERVER['PHP_SELF'], array(
-                            'success' => 1
-                        )));
+                    header('Location: ./registration-1');
                     die;
                 } else {
                     $msg .= 'Ошибка сохранения';

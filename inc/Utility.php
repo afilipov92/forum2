@@ -27,9 +27,9 @@ class Utility{
     public static function checkActivation($result, $db){
         if($result){
             $db->updateHashDB($result['id']);
-            return "Ваша учетная записать активирована<br/><a href='index.php'>Перейти на главную страницу</a>";
+            return "Ваша учетная записать активирована<br/><a href='../forum'>Перейти на главную страницу</a>";
         } else{
-            return "Ошибка активации учетной записи";
+            return "Ошибка активации учетной записи<br/><a href='../forum'>Перейти на главную страницу</a>";
         }
     }
 
@@ -39,7 +39,7 @@ class Utility{
      * @param array $data
      * @return string
      */
-    public static function getUrl($url = "./index.php", array $data = array()){
+    public static function getUrl($url = "../forum", array $data = array()){
         if(!empty($data)) {
             $url .= '?';
             foreach ($data as $key => $a) {
