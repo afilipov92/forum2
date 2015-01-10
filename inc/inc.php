@@ -9,22 +9,22 @@ function autoload($className) {
 }
 /*
 define('DB_HOST', 'mysql.hostinger.ru');
-define('DB_USER', 'u230910915_root');
-define('DB_PASSWORD', 'Blackpearl99');
-define('DB_NAME', 'u230910915_study');*/
+define('DB_USER', '-------');
+define('DB_PASSWORD', '---------');
+define('DB_NAME', '--------------');*/
 
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD', 'Blackpearl99');
-define('DB_NAME', 'study3');
+define('DB_USER', '-----------');
+define('DB_PASSWORD', '------------');
+define('DB_NAME', '---------');
 
 define('CHAR_SET', 'UTF-8');
 define('SMTP_SEC', 'ssl');
 define('MAIL_HOST', 'smtp.yandex.ru');
 define('MAIL_PORT', 465);
 define('MAIL_USERNAME', 'al.oz2015@yandex.ru');
-define('MAIL_PASSWORD', 'Paradise90');
+define('MAIL_PASSWORD', '---------------');
 
 define('ID_ADMIN', 1);
 define('ID_USER', 2);
